@@ -60,9 +60,7 @@ def home():
 @app.route('/program')
 def program():
     dict = json.loads(wod)
-    print(dict)
     return render_template('pages/placeholder.program.html', day1_wod = dict["day1"], day2_wod = dict["day2"])
-
 
 @app.route('/about')
 def about():
