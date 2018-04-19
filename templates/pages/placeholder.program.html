@@ -1,0 +1,40 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h1>Enrolled Program List</h1>
+</div>
+<p class="lead">
+  This section will be filled with various routine.
+  For now, just put one program.
+</p>
+
+<div>
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">First</th>
+	      <th scope="col">Second</th>
+	      <th scope="col">Final</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+  	    <tr>
+		  <th scope="row">Day 1</th>
+		  {% for i in day1_wod %}
+		    <td>{{i}}</td>
+		  {% endfor %}
+		</tr>
+  	    <tr>
+		  <th scope="row">Day 2</th>
+		  {% for i in day2_wod %}
+		    <td>{{i}}</td>
+		  {% endfor %}
+		</tr>
+	  </tbody>
+	</table>  	
+</div>	  
+
+{% endblock %}

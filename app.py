@@ -7,7 +7,18 @@ from flask import Flask, render_template, request
 import logging
 from logging import Formatter, FileHandler
 from forms import *
+import json
 import os
+
+
+#----------------------------------------------------------------------------#
+# Test Data
+#----------------------------------------------------------------------------#
+
+wod = '{"name": "Daily Program", \
+        "day1": ["Squat", "Military Press", "Barbel Row"], \
+        "day2": ["Deadlift", "Bench Press"]            \
+    }'
 
 #----------------------------------------------------------------------------#
 # App Config.
@@ -44,6 +55,13 @@ def login_required(test):
 @app.route('/')
 def home():
     return render_template('pages/placeholder.home.html')
+
+    
+@app.route('/program')
+def program():
+    dict = json.loads(wod)
+    print(dict)
+    return render_template('pages/placeholder.program.html', day1_wod = dict["day1"], day2_wod = dict["day2"])
 
 
 @app.route('/about')
