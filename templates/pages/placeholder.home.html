@@ -22,18 +22,18 @@
 	  </thead>
 	  <tbody>
 	    {% if date_index in [0, 3] %}
-		  {% for i in day1_wod %}
-		  	<tr>
-			    <td>{{i}}</td>
-			    <td> 5 X 5</td>
-		    </tr>
+		  {% for program, rep in wod["option"][0].iteritems() %}
+		  <tr>
+		  	<td>{{program}}</td>
+		  	<td>{{rep}}</td>
+		  </tr>
 		  {% endfor %}
 		{% else %}
-		  {% for i in day2_wod %}
-		    <tr>
-			    <td>{{i}}</td>
-			    <td> 5 X 5</td>
-		    </tr>
+		  {% for program, rep in wod["option"][1].iteritems() %}
+		  <tr>
+		  	<td>{{program}}</td>
+		  	<td>{{rep}}</td>
+		  </tr>	
 		  {% endfor %}
 		{% endif %}
 	  </tbody>

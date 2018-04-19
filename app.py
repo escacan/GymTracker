@@ -16,8 +16,10 @@ import datetime
 #----------------------------------------------------------------------------#
 
 wod = '{"name": "Daily Program", \
-        "day1": ["Squat", "Military Press", "Barbel Row"], \
-        "day2": ["Deadlift", "Bench Press"]            \
+        "option":[                                            \
+            {"Squat":"5x5", "Military Press":"5x4", "Barbel Row":"5x3"}, \
+            {"Deadlift":"5x2", "Bench Press":"5x2"}            \
+        ]   \
     }'
 wod_dict = json.loads(wod)
 
@@ -56,14 +58,15 @@ def login_required(test):
 @app.route('/')
 def home():
     weekday = ["Mon", "Tue", "Wen", "Thu", "Fri", "Sat", "Sun"]
-    # date_index = datetime.datetime.today().weekday()
-    date_index= 6
-    return render_template('pages/placeholder.home.html', weekday= weekday[date_index], date_index= date_index, day1_wod = wod_dict["day1"], day2_wod = wod_dict["day2"])
+    date_index = datetime.datetime.today().weekday()
+    return render_template('pages/placeholder.home.html', weekday= weekday[date_index], date_index= date_index, wod= wod_dict)
 
     
 @app.route('/program')
 def program():
-    return render_template('pages/placeholder.program.html', day1_wod = wod_dict["day1"], day2_wod = wod_dict["day2"])
+    return render_template('pages/placeholder.program.html', wod= wod_dict)
+    # return render_template('pages/placeholder.program.html', day1_wod = wod_dict["opt_1"], day2_wod = wod_dict["opt_2"])
+
 
 @app.route('/about')
 def about():

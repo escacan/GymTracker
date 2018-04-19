@@ -11,34 +11,20 @@
 </p>
 
 <div>
-	<table class="table">
-	  <thead>
-	    <tr>
-	      <th scope="col">#</th>
-	      <th scope="col">First</th>
-	      <th scope="col">Second</th>
-	      <th scope="col">Final</th>
-	    </tr>
-	  </thead>
+	<table class="table" style="border">
 	  <tbody>
+	  	{% for opt_index in range(wod["option"]|length) %}
   	    <tr>
-		  <th scope="row">Day 1</th>
-		  {% for i in day1_wod %}
-		    <td>{{i}}</td>
+		  <th scope="row">Routine {{opt_index + 1}}</th>
+		  {% for program, rep in wod["option"][opt_index].iteritems() %}
+		  	<td>{{program}} {{rep}}</td>
 		  {% endfor %}
-		  {% if day1_wod|length < 3 %}
-		  	<td>Empty</td>
-		  {% endif %}
-		</tr>
-  	    <tr>
-		  <th scope="row">Day 2</th>
-		  {% for i in day2_wod %}
-		    <td>{{i}}</td>
+
+		  {% for i in range( 3- wod["option"][opt_index]|length ) %}
+		  	<td></td>
 		  {% endfor %}
-		  {% if day2_wod|length < 3 %}
-		  	<td>Empty</td>
-		  {% endif %}
 		</tr>
+    	{% endfor %}
 	  </tbody>
 	</table>  	
 </div>	  
