@@ -9,7 +9,7 @@ from logging import Formatter, FileHandler
 from forms import *
 import json
 import os
-
+import datetime
 
 #----------------------------------------------------------------------------#
 # Test Data
@@ -19,6 +19,7 @@ wod = '{"name": "Daily Program", \
         "day1": ["Squat", "Military Press", "Barbel Row"], \
         "day2": ["Deadlift", "Bench Press"]            \
     }'
+wod_dict = json.loads(wod)
 
 #----------------------------------------------------------------------------#
 # App Config.
@@ -54,13 +55,15 @@ def login_required(test):
 
 @app.route('/')
 def home():
-    return render_template('pages/placeholder.home.html')
+    weekday = ["Mon", "Tue", "Wen", "Thu", "Fri", "Sat", "Sun"]
+    # date_index = datetime.datetime.today().weekday()
+    date_index= 6
+    return render_template('pages/placeholder.home.html', weekday= weekday[date_index], date_index= date_index, day1_wod = wod_dict["day1"], day2_wod = wod_dict["day2"])
 
     
 @app.route('/program')
 def program():
-    dict = json.loads(wod)
-    return render_template('pages/placeholder.program.html', day1_wod = dict["day1"], day2_wod = dict["day2"])
+    return render_template('pages/placeholder.program.html', day1_wod = wod_dict["day1"], day2_wod = wod_dict["day2"])
 
 @app.route('/about')
 def about():
