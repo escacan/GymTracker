@@ -26,12 +26,18 @@
 		  {% for i in day1_wod %}
 		    <td>{{i}}</td>
 		  {% endfor %}
+		  {% if day1_wod|length < 3 %}
+		  	<td>Empty</td>
+		  {% endif %}
 		</tr>
   	    <tr>
 		  <th scope="row">Day 2</th>
 		  {% for i in day2_wod %}
 		    <td>{{i}}</td>
 		  {% endfor %}
+		  {% if day2_wod|length < 3 %}
+		  	<td>Empty</td>
+		  {% endif %}
 		</tr>
 	  </tbody>
 	</table>  	
