@@ -8,3 +8,6 @@ Service serves 2 main function.
 
 1. Show daily workout program.
 2. Workout tracker, how much i lifted last time. -> Show graph for displaying how much i gained.
+
+
+ref : https://realpython.com/scaffold-a-flask-project/
