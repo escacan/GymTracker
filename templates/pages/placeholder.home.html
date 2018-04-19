@@ -5,14 +5,16 @@
 <div class="page-header">
   <h1>Let's do Workout!</h1>
 </div>
-<p class="lead">Today is "{{weekday}}". This is what we gonna do today.
-</p>
 
 {% if date_index > 4 or date_index == 2 %}
 <div>
-	<p>Take a rest. Prepare for tomorrow</p>
+	<p class="lead">Today is "{{weekday}}". Take a rest. Prepare for tomorrow</p>
+
+	<input type="button" value="Nop. I ain't gonna stop here"> 
 </div>
 {% else %}
+	<p class="lead">Today is "{{weekday}}". This is what we gonna do today.</p>
+
 	<table class="table">
 	  <thead>
 	    <tr>
