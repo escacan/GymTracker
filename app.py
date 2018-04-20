@@ -65,8 +65,10 @@ def home():
 @app.route('/program')
 def program():
     return render_template('pages/placeholder.program.html', wod= wod_dict)
-    # return render_template('pages/placeholder.program.html', day1_wod = wod_dict["opt_1"], day2_wod = wod_dict["opt_2"])
 
+@app.route('/wod_board')
+def wod_board():
+    return render_template('pages/placeholder.wod_board.html', wod= wod_dict)
 
 @app.route('/about')
 def about():

@@ -58,7 +58,7 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a>Action</a></li>
+                <li {% if request.endpoint == 'wod_board' %} class="active" {% endif %}><a href="{{ url_for('wod_board') }}">WOD Board</a></li>
                 <li><a>Another action</a></li>
                 <li><a>Something else here</a></li>
                 <li class="divider"></li>

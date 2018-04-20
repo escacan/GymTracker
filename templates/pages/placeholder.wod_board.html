@@ -1,0 +1,37 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Action{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h1>Hooah</h1>
+</div>
+
+<div>
+  <p class="lead">{{wod["name"]}}</p> 
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Workout</th>
+        <th scope="col">REP X SET</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if date_index in [0, 3] %}
+      {% for program, rep in wod["option"][0].iteritems() %}
+      <tr>
+        <td>{{program}}</td>
+        <td>{{rep}}</td>
+      </tr>
+      {% endfor %}
+    {% else %}
+      {% for program, rep in wod["option"][1].iteritems() %}
+      <tr>
+        <td>{{program}}</td>
+        <td>{{rep}}</td>
+      </tr> 
+      {% endfor %}
+    {% endif %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
