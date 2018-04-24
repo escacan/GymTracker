@@ -28,7 +28,7 @@
 		  {% for program, rep in wod["option"][0].iteritems() %}
 		  <tr>
 		  	<td>{{program}}</td>
-		  	<td>{{rep}}</td>
+		  	<td>{{rep[0]}} X {{rep[1]}}</td>
 		  </tr>
 		  {% endfor %}
 		{% else %}
