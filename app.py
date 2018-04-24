@@ -7,7 +7,28 @@ from flask import Flask, render_template, request
 import logging
 from logging import Formatter, FileHandler
 from forms import *
+import json
 import os
+import datetime
+
+#----------------------------------------------------------------------------#
+# Test Data
+#----------------------------------------------------------------------------#
+
+# wod = '{"name": "Daily Program", \
+#         "option":[                                            \
+#             {"Squat":"5x5", "Military Press":"5x4", "Barbel Row":"5x3"}, \
+#             {"Deadlift":"5x2", "Bench Press":"5x2"}            \
+#         ]   \
+#     }'
+
+wod = '{"name": "Daily Program", \
+        "option":[                                            \
+            {"Squat":[5, 5], "Military Press":[5, 4], "Barbel Row":[5, 3]}, \
+            {"Deadlift":[5, 2], "Bench Press":[5, 2]}            \
+        ]   \
+    }'    
+wod_dict = json.loads(wod)
 
 #----------------------------------------------------------------------------#
 # App Config.
@@ -43,8 +64,18 @@ def login_required(test):
 
 @app.route('/')
 def home():
-    return render_template('pages/placeholder.home.html')
+    weekday = ["Mon", "Tue", "Wen", "Thu", "Fri", "Sat", "Sun"]
+    date_index = datetime.datetime.today().weekday()
+    return render_template('pages/placeholder.home.html', weekday= weekday[date_index], date_index= date_index, wod= wod_dict)
 
+    
+@app.route('/program')
+def program():
+    return render_template('pages/placeholder.program.html', wod= wod_dict)
+
+@app.route('/wod_board')
+def wod_board():
+    return render_template('pages/placeholder.wod_board.html', wod= wod_dict)
 
 @app.route('/about')
 def about():

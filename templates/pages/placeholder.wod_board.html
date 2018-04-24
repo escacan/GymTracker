@@ -1,0 +1,66 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Action{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h1>WOD BOARD</h1>
+</div>
+
+<div>
+  <p class="lead">{{wod["name"]}}</p> 
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Workout</th>
+        <th scope="col">REP X SET</th>
+        <th scope="col">Check</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if date_index in [0, 3] %}
+      {% for program, rep in wod["option"][0].iteritems() %}
+      <tr>
+        <td>{{program}}</td>
+        <td>{{rep[0]}} X {{rep[1]}}</td>
+        <td>
+          {% for i in range(rep[1]) %}
+          SET {{i}} <input type="checkbox">
+          {% endfor %}
+        </td>
+      </tr>
+      {% endfor %}
+    {% else %}
+      {% for program, rep in wod["option"][1].iteritems() %}
+      <tr>
+        <td>{{program}}</td>
+        <td>{{rep[0]}} X {{rep[1]}}</td>
+        <td>
+          {% for i in range(rep[1]) %}
+          SET {{i}} <input type="checkbox">
+          {% endfor %}
+        </td>
+      </tr> 
+      {% endfor %}
+    {% endif %}
+    </tbody>
+  </table>
+</div>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){ 
+    $('input:checkbox').change(function () {
+      var checkbox_count = $("[type='checkbox']:checked").length;
+      var totalCheckboxes = $('input:checkbox').length;
+      console.log(checkbox_count, totalCheckboxes);
+      if(checkbox_count == totalCheckboxes){
+        alert("Good Job! You did it!");
+      }
+      // else {
+      //   alert("Rest for 1 min");
+      // }
+    });
+  });
+</script>
+
+{% endblock %}
