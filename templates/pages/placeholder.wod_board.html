@@ -13,6 +13,7 @@
       <tr>
         <th scope="col">Workout</th>
         <th scope="col">REP X SET</th>
+        <th scope="col">Check</th>
       </tr>
     </thead>
     <tbody>
@@ -20,14 +21,24 @@
       {% for program, rep in wod["option"][0].iteritems() %}
       <tr>
         <td>{{program}}</td>
-        <td>{{rep}}</td>
+        <td>{{rep[0]}} X {{rep[1]}}</td>
+        <td>
+          {% for i in range(rep[1]) %}
+          SET {{i}} <input type="checkbox">
+          {% endfor %}
+        </td>
       </tr>
       {% endfor %}
     {% else %}
       {% for program, rep in wod["option"][1].iteritems() %}
       <tr>
         <td>{{program}}</td>
-        <td>{{rep}}</td>
+        <td>{{rep[0]}} X {{rep[1]}}</td>
+        <td>
+          {% for i in range(rep[1]) %}
+          SET {{i}} <input type="checkbox">
+          {% endfor %}
+        </td>
       </tr> 
       {% endfor %}
     {% endif %}

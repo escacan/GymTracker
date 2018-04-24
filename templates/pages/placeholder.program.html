@@ -18,7 +18,7 @@
   	    <tr>
 		  <th scope="row">Routine {{opt_index + 1}}</th>
 		  {% for program, rep in wod["option"][opt_index].iteritems() %}
-		  	<td>{{program}} {{rep}}</td>
+		  	<td>{{program}} {{rep[0]}} X {{rep[1]}}</td>
 		  {% endfor %}
 
 		  {% for i in range( 3- wod["option"][opt_index]|length ) %}

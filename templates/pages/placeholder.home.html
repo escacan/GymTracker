@@ -35,14 +35,14 @@
 		  {% for program, rep in wod["option"][1].iteritems() %}
 		  <tr>
 		  	<td>{{program}}</td>
-		  	<td>{{rep}}</td>
+		  	<td>{{rep[0]}} X {{rep[1]}}</td>
 		  </tr>	
 		  {% endfor %}
 		{% endif %}
 	  </tbody>
 	</table>
 
-	<input type="button" value="Start!" onclick="window.location.href='{{ url_for('wod_board') }}'"> 
+	<input type="button" value="Start!" onclick="window.location.href='{{url_for('wod_board')}}'"> 
 {% endif %}
 
 {% endblock %}
