@@ -15,12 +15,19 @@ import datetime
 # Test Data
 #----------------------------------------------------------------------------#
 
+# wod = '{"name": "Daily Program", \
+#         "option":[                                            \
+#             {"Squat":"5x5", "Military Press":"5x4", "Barbel Row":"5x3"}, \
+#             {"Deadlift":"5x2", "Bench Press":"5x2"}            \
+#         ]   \
+#     }'
+
 wod = '{"name": "Daily Program", \
         "option":[                                            \
-            {"Squat":"5x5", "Military Press":"5x4", "Barbel Row":"5x3"}, \
-            {"Deadlift":"5x2", "Bench Press":"5x2"}            \
+            {"Squat":[5, 5], "Military Press":[5, 4], "Barbel Row":[5, 3]}, \
+            {"Deadlift":[5, 2], "Bench Press":[5, 2]}            \
         ]   \
-    }'
+    }'    
 wod_dict = json.loads(wod)
 
 #----------------------------------------------------------------------------#
