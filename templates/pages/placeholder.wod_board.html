@@ -45,4 +45,22 @@
     </tbody>
   </table>
 </div>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){ 
+    $('input:checkbox').change(function () {
+      var checkbox_count = $("[type='checkbox']:checked").length;
+      var totalCheckboxes = $('input:checkbox').length;
+      console.log(checkbox_count, totalCheckboxes);
+      if(checkbox_count == totalCheckboxes){
+        alert("Good Job! You did it!");
+      }
+      // else {
+      //   alert("Rest for 1 min");
+      // }
+    });
+  });
+</script>
+
 {% endblock %}
